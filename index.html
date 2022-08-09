@@ -13,14 +13,14 @@
     <h1>Our Pricing</h1>
     <div class="spans">
       <span>Annually</span>
-      <span class="toggle" id="toggle"><span class="tog-btn monthlyBtn"></span></span>
+      <div class="toggle"><div id="switch" class="switch"></div></div>
       <span>Monthly</span>
     </div>
     
     <div class="card-container">
       <div class="card">
         <p>Basic</p>
-        <h2>&dollar; <span class="price">19.99</span></h2>
+        <h2>&dollar; <span class="price plan-price">19.99</span></h2>
         <hr>
         <p>500 GB Storage</p>
         <hr>
@@ -32,7 +32,7 @@
       </div>
       <div class="card card-prof">
         <p>Professional</p>
-        <h2>&dollar; <span class="price">24.99</span></h2>
+        <h2>&dollar; <span class="price plan-price">24.99</span></h2>
         <hr>
         <p>1 TB Storage</p>
         <hr>
@@ -44,60 +44,7 @@
       </div>
       <div class="card">
         <p>Master</p>
-        <h2>&dollar; <span class="price">39.99</span></h2>
-        <hr>
-        <p>2 TB Storage</p>
-        <hr>
-        <p>10 Users Allowed</p>
-        <hr>
-        <p>Send up to 20 GB</p>
-        <hr>
-        <button type="submit" class="learn-more">Learn More</button>
-      </div>
-    </div>
-
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="https://thedeola.netlify.app">TheDeola</a>.
-    </div>
-  </main>
-  
-  <main class="container con-annually hide">
-    <h1>Our Pricing</h1>
-    <div class="spans">
-      <span>Annually</span>
-      <span class="toggle" id="toggle"><span class="tog-btn annuallyBtn"></span></span>
-      <span>Monthly</span>
-    </div>
-
-    <div class="card-container">
-      <div class="card">
-        <p>Basic</p>
-        <h2>&dollar; <span class="price">199.99</span></h2>
-        <hr>
-        <p>500 GB Storage</p>
-        <hr>
-        <p>2 Users Allowed</p>
-        <hr>
-        <p>Send up to 3 GB</p>
-        <hr>
-        <button type="submit" class="learn-more">Learn More</button>
-      </div>
-      <div class="card card-prof">
-        <p>Professional</p>
-        <h2>&dollar; <span class="price">249.99</span></h2>
-        <hr>
-        <p>1 TB Storage</p>
-        <hr>
-        <p>5 Users Allowed</p>
-        <hr>
-        <p>Send up to 10 GB</p>
-        <hr>
-        <button type="submit" class="learn-more">Learn More</button>
-      </div>
-      <div class="card">
-        <p>Master</p>
-        <h2>&dollar; <span class="price">399.99</span></h2>
+        <h2>&dollar; <span class="price plan-price">39.99</span></h2>
         <hr>
         <p>2 TB Storage</p>
         <hr>
@@ -116,22 +63,21 @@
   </main>
 
   <script>
-    let monthlyBtn = document.querySelector(".monthlyBtn")
-    let annuallyBtn = document.querySelector(".annuallyBtn")
+    let toggle = document.querySelector(".toggle")
+    let switchDot = document.getElementById("switch")
+    let planPrices = document.querySelectorAll(".plan-price") 
 
-    let monthlyContainer = document.querySelector(".con-monthly")
-    let annualContainer = document.querySelector(".con-annually")
+    let annually = [199.99, 249.99, 399.99];
+    let monthly = [19.99, 24.99, 39.99];
 
-    console.log(annuallyBtn);
+    toggle.addEventListener("click", () => {
+      planPrices.forEach((p, i) => {
+        p.classList.toggle("annually");
 
-    annuallyBtn.addEventListener("click", function() {
-      monthlyBtn.classList.add("hide");
-      monthlyBtn.classList.remove("hide");
-    })
-
-    monthlyBtn.addEventListener("click", function (){
-      annuallyBtn.classList.add("hide");
-      annuallyBtn.classList.remove("hide");
+        p.classList.contains("annually")
+        ? ((p.textContent = annually[i], (switchDot.style.left = "3px")))
+        : ((p.textContent = monthly[i], (switchDot.style.left = "27px")))
+      })
     })
   </script>
 </body>
